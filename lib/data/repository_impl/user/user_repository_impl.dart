@@ -28,7 +28,20 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<List<ProductModel>> getWishListProducts(UserModel user) async {
+  Future<List<ProductModel>> getWishListProducts() async {
+    var user = await userLocalDataSource.getUserDetails();
     return await userRemoteDataSource.getWishListProducts(user);
+  }
+
+  @override
+  Future removeFromWishList(ProductModel product) async {
+    var user = await userLocalDataSource.getUserDetails();
+    return await userRemoteDataSource.removeFromWishList(product, user.userId);
+  }
+
+  @override
+  Future<bool> checkIfWishListed(ProductModel product) async {
+    var user = await userLocalDataSource.getUserDetails();
+    return await userRemoteDataSource.checkIfWishListed(product, user.userId);
   }
 }

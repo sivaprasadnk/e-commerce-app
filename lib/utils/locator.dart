@@ -10,7 +10,10 @@ import 'package:e_comm_app/domain/use-case/auth/check_is_logged_in.dart';
 import 'package:e_comm_app/domain/use-case/auth/sign_in.dart';
 import 'package:e_comm_app/domain/use-case/auth/sign_out.dart';
 import 'package:e_comm_app/domain/use-case/product/get_products.dart';
+import 'package:e_comm_app/domain/use-case/product/get_wishlist.dart';
 import 'package:e_comm_app/domain/use-case/user/add_to_wishlist.dart';
+import 'package:e_comm_app/domain/use-case/user/check_if_wishlisted.dart';
+import 'package:e_comm_app/domain/use-case/user/remove_wishlist.dart';
 import 'package:e_comm_app/domain/use-case/user/save_user_details.dart';
 import 'package:get_it/get_it.dart';
 
@@ -43,4 +46,7 @@ void setup() {
   locator.registerSingleton<CheckIsLoggedIn>(CheckIsLoggedIn(locator()));
   locator.registerSingleton<GetProducts>(GetProducts(locator()));
   locator.registerSingleton<AddToWishlist>(AddToWishlist(locator()));
+  locator.registerSingleton<GetWishlist>(GetWishlist(locator()));
+  locator.registerSingleton<RemoveWishlist>(RemoveWishlist(locator()));
+  locator.registerSingleton<CheckIfWishlisted>(CheckIfWishlisted(locator()));
 }

@@ -5,5 +5,8 @@ abstract class UserRepository {
   Future saveUserDetails(UserModel user);
   Future<UserModel> getUserDetails();
   Future addToWishList(ProductModel product);
-  Future<List<ProductModel>> getWishListProducts(UserModel user);
+  Future<List<ProductModel>> getWishListProducts();
+  Future removeFromWishList(ProductModel product);
+  Future<bool> checkIfWishListed(ProductModel product);
+
 }

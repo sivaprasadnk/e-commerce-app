@@ -1,7 +1,7 @@
 import 'package:e_comm_app/presentation/bloc/product/product_bloc.dart';
 import 'package:e_comm_app/presentation/bloc/product/product_state.dart';
+import 'package:e_comm_app/presentation/components/product_item.dart';
 import 'package:e_comm_app/presentation/components/screen_title.dart';
-import 'package:e_comm_app/presentation/screens/products/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,10 +29,13 @@ class ProductsScreen extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 var product = products[index];
-                return ProductItem(product: product);
+                return ProductItem(
+                  product: product,
+                  isWishListed: false,
+                );
               },
             );
-          })
+          }),
         ],
       ),
     );

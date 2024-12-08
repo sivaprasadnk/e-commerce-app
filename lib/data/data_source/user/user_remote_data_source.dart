@@ -7,6 +7,8 @@ abstract class UserRemoteDataSource {
   Future addToWishList(ProductModel product, String userId);
   Future addToDatabase(UserModel user);
   Future<List<ProductModel>> getWishListProducts(UserModel user);
+  Future removeFromWishList(ProductModel product, String userId);
+  Future<bool> checkIfWishListed(ProductModel product, String userId);
 }
 
 class UserRemoteDataSourceImpl extends UserRemoteDataSource {
@@ -40,5 +42,26 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
     return querySnapShot.docs
         .map((e) => ProductModel.fromJson(e.data()))
         .toList();
+  }
+
+  @override
+  Future removeFromWishList(ProductModel product, String userId) async {
+    return await db
+        .collection(usersCollection)
+        .doc(userId)
+        .collection(wishListCollection)
+        .doc(product.sku)
+        .delete();
+  }
+
+  @override
+  Future<bool> checkIfWishListed(ProductModel product, String userId) async {
+    DocumentSnapshot doc = await db
+        .collection(usersCollection)
+        .doc(userId)
+        .collection(wishListCollection)
+        .doc(product.sku)
+        .get();
+    return doc.exists;
   }
 }

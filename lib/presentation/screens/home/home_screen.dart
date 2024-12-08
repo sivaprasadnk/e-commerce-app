@@ -1,3 +1,5 @@
+import 'package:e_comm_app/presentation/bloc/product/product_bloc.dart';
+import 'package:e_comm_app/presentation/bloc/product/product_event.dart';
 import 'package:e_comm_app/presentation/bloc/route/route_bloc.dart';
 import 'package:e_comm_app/presentation/bloc/route/route_event.dart';
 import 'package:e_comm_app/presentation/bloc/route/route_state.dart';
@@ -50,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 BottomNavbarItem(
                   callback: () {
+                    context.read<ProductBloc>().add(GetWishListProductsEvent());
                     context.read<RouteBloc>().add(UpdateIndexEvent(1));
                   },
                   title: 'WishList',

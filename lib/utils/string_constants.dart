@@ -10,3 +10,5 @@ const String homeScreenRoute = '/homeScreen';
 
 ///
 const String productsCollection = 'products';
+const String usersCollection = 'users';
+const String wishListCollection = 'wishList';

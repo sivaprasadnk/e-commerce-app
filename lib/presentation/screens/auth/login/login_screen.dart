@@ -23,6 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           const SizedBox(height: 300),
+          const Icon(
+            Icons.shopping_cart,
+            size: 150,
+          ),
+          const SizedBox(height: 50),
+          // const Text('Login'),
           Center(
             child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
               return CommonButton(
@@ -32,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   context.read<RouteBloc>().add(UpdateIndexEvent(0));
 
                 },
-                title: 'Continue with Google',
+                title: 'Sign Up / Sign In with Google',
               );
             }),
           ),

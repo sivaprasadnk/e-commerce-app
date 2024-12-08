@@ -1,3 +1,4 @@
+import 'package:e_comm_app/utils/common_colors.dart';
 import 'package:flutter/material.dart';
 
 class CommonButton extends StatelessWidget {
@@ -11,6 +12,10 @@ class CommonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: const ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(orangeColor),
+        foregroundColor: WidgetStatePropertyAll(whiteColor),
+      ),
       onPressed: () {
         callback.call();
       },

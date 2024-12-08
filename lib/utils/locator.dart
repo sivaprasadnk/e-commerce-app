@@ -2,6 +2,7 @@ import 'package:e_comm_app/data/data_source/auth/auth_local_data_source.dart';
 import 'package:e_comm_app/data/data_source/auth/auth_remote_data_source.dart';
 import 'package:e_comm_app/data/data_source/product/product_remote_data_source.dart';
 import 'package:e_comm_app/data/data_source/user/user_local_data_source.dart';
+import 'package:e_comm_app/data/data_source/user/user_remote_data_source.dart';
 import 'package:e_comm_app/data/repository_impl/auth/auth_repository_impl.dart';
 import 'package:e_comm_app/data/repository_impl/product/product_repository_impl.dart';
 import 'package:e_comm_app/data/repository_impl/user/user_repository_impl.dart';
@@ -9,6 +10,7 @@ import 'package:e_comm_app/domain/use-case/auth/check_is_logged_in.dart';
 import 'package:e_comm_app/domain/use-case/auth/sign_in.dart';
 import 'package:e_comm_app/domain/use-case/auth/sign_out.dart';
 import 'package:e_comm_app/domain/use-case/product/get_products.dart';
+import 'package:e_comm_app/domain/use-case/user/add_to_wishlist.dart';
 import 'package:e_comm_app/domain/use-case/user/save_user_details.dart';
 import 'package:get_it/get_it.dart';
 
@@ -19,6 +21,8 @@ void setup() {
       .registerSingleton<AuthRemoteDataSourceImpl>(AuthRemoteDataSourceImpl());
   locator.registerSingleton<ProductRemoteDataSourceImpl>(
       ProductRemoteDataSourceImpl());
+  locator
+      .registerSingleton<UserRemoteDataSourceImpl>(UserRemoteDataSourceImpl());
 
   /// local datasource
   locator.registerSingleton<UserLocalDataSourceImpl>(UserLocalDataSourceImpl());
@@ -27,7 +31,8 @@ void setup() {
   /// repository
   locator.registerSingleton<AuthRepositoryImpl>(
       AuthRepositoryImpl(locator(), locator()));
-  locator.registerSingleton<UserRepositoryImpl>(UserRepositoryImpl(locator()));
+  locator.registerSingleton<UserRepositoryImpl>(
+      UserRepositoryImpl(locator(), locator()));
   locator.registerSingleton<ProductRepositoryImpl>(
       ProductRepositoryImpl(locator()));
 
@@ -37,4 +42,5 @@ void setup() {
   locator.registerSingleton<SaveUserDetails>(SaveUserDetails(locator()));
   locator.registerSingleton<CheckIsLoggedIn>(CheckIsLoggedIn(locator()));
   locator.registerSingleton<GetProducts>(GetProducts(locator()));
+  locator.registerSingleton<AddToWishlist>(AddToWishlist(locator()));
 }

@@ -7,3 +7,6 @@ const String userIdKey = 'userId';
 const String splashScreenRoute = '/splashScreen';
 const String logInScreenRoute = '/logInScreen';
 const String homeScreenRoute = '/homeScreen';
+
+///
+const String productsCollection = 'products';

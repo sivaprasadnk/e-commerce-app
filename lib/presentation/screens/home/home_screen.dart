@@ -99,9 +99,12 @@ class _HomeScreenState extends State<HomeScreen> {
       //     ),
       //   ],
       // ),
-      body: BlocBuilder<RouteBloc, RouteState>(builder: (context, state) {
-        return screens[state.currentIndex ?? 0];
-      }),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: BlocBuilder<RouteBloc, RouteState>(builder: (context, state) {
+          return screens[state.currentIndex ?? 0];
+        }),
+      ),
     );
   }
 }

@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     var isLoggedIn = await locator<CheckIsLoggedIn>().call();
     if (isLoggedIn) {
       if (context.mounted) {
-        Navigator.popAndPushNamed(context, homeScreenRoute);
+        Navigator.popAndPushNamed(context, logInScreenRoute);
       }
     } else {
       if (context.mounted) {

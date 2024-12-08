@@ -1,6 +1,10 @@
 import 'package:e_comm_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:e_comm_app/presentation/bloc/auth/auth_event.dart';
 import 'package:e_comm_app/presentation/bloc/auth/auth_state.dart';
+import 'package:e_comm_app/presentation/bloc/product/product_bloc.dart';
+import 'package:e_comm_app/presentation/bloc/product/product_event.dart';
+import 'package:e_comm_app/presentation/bloc/route/route_bloc.dart';
+import 'package:e_comm_app/presentation/bloc/route/route_event.dart';
 import 'package:e_comm_app/presentation/components/common_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
               return CommonButton(
                 callback: () async {
                   context.read<AuthBloc>().add(LoginEvent(context));
+                  context.read<ProductBloc>().add(GetProductsEvent());
+                  context.read<RouteBloc>().add(UpdateIndexEvent(0));
+
                 },
                 title: 'Continue with Google',
               );

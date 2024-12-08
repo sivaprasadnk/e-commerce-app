@@ -1,5 +1,6 @@
 import 'package:e_comm_app/firebase_options.dart';
 import 'package:e_comm_app/presentation/bloc/auth/auth_bloc.dart';
+import 'package:e_comm_app/presentation/bloc/product/product_bloc.dart';
 import 'package:e_comm_app/presentation/bloc/route/route_bloc.dart';
 import 'package:e_comm_app/presentation/screens/auth/login/login_screen.dart';
 import 'package:e_comm_app/presentation/screens/home/home_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(create: (_) => AuthBloc()),
         BlocProvider<RouteBloc>(create: (_) => RouteBloc()),
+        BlocProvider<ProductBloc>(create: (_) => ProductBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
